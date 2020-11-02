@@ -1,0 +1,340 @@
+.react-server-side-table {
+  position: relative;
+  line-height: 1;
+  font-size: 16px;
+  color: #222;
+}
+
+.react-server-side-table .table-toolbar {
+  padding: 15px 0;
+}
+
+.react-server-side-table .table-toolbar:after,
+.react-server-side-table .table-pagination:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.react-server-side-table .length-menu {
+  float: left;
+  padding-right: 10px;
+}
+
+.react-server-side-table .search-input {
+  float: right;
+}
+
+.react-server-side-table .length-menu > select,
+.react-server-side-table .search-input > input {
+  display: inline-block;
+  height: 35px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  line-height: 1.5;
+  padding: 6px 12px;
+  background: #fff;
+  font-size: 15px;
+  color: #555;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.react-server-side-table .length-menu > select {
+  width: 65px;
+}
+
+.react-server-side-table .search-input > input {
+  width: 200px;
+}
+
+.react-server-side-table .length-menu > select:focus,
+.react-server-side-table .search-input > input:focus {
+  outline: 0;
+  border-color: #80bdff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,.25);
+}
+
+.react-server-side-table .length-menu > span {
+  color: #555;
+}
+
+.react-server-side-table .length-menu > span:first-child {
+  padding-right: 10px;
+}
+
+.react-server-side-table .length-menu > span:last-child {
+  padding-left: 10px;
+}
+
+.react-server-side-table .sort-th {
+  position: relative;
+  padding: 8px 29px;
+  cursor: pointer;
+}
+
+.react-server-side-table .sort-icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  width: 19px;
+  height: 19px;
+  margin-top: -10px;
+  background-image: url('./sort.png');
+  background-repeat: no-repeat;
+}
+
+.react-server-side-table .sort-both {
+  background-position: 0 0;
+}
+
+.react-server-side-table .sort-asc {
+  background-position: -19px 0;
+}
+
+.react-server-side-table .sort-desc {
+  background-position: -38px 0;
+}
+
+.react-server-side-table .loading {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.react-server-side-table .loading > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.react-server-side-table table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.react-server-side-table table th,
+.react-server-side-table table td {
+  height: 46px;
+  border: 1px solid #e4e4e4;
+  line-height: 16px;
+  padding: 8px 10px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.react-server-side-table table thead th {
+  color: #333;
+}
+
+.react-server-side-table tbody tr td {
+  color: #555;
+}
+
+.react-server-side-table .table-checkbox,
+.react-server-side-table .table-radio {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.react-server-side-table .table-checkbox input,
+.react-server-side-table .table-checkbox svg,
+.react-server-side-table .table-radio input,
+.react-server-side-table .table-radio svg  {
+  display: block;
+  width: 21px;
+  height: 21px;
+}
+
+.react-server-side-table .table-checkbox input,
+.react-server-side-table .table-radio input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  outline: none;
+  background: #fff;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  box-shadow: inset 0 0 0 1px #d1d6ee;
+}
+
+.react-server-side-table .table-checkbox input {
+  border-radius: 4px;
+}
+
+.react-server-side-table .table-radio input {
+  border-radius: 10px;
+}
+
+.react-server-side-table .table-checkbox input:hover,
+.react-server-side-table .table-radio input:hover  {
+  box-shadow: inset 0 0 0 2px #bbc1e1;
+}
+
+.react-server-side-table .table-checkbox svg,
+.react-server-side-table .table-radio svg {
+  pointer-events: none;
+  fill: none;
+  stroke-width: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 21px;
+  height: 21px;
+}
+
+.react-server-side-table .table-checkbox svg {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.react-server-side-table .table-checkbox.path input:checked,
+.react-server-side-table .table-radio input:checked  {
+  box-shadow: inset 0 0 0 2px #007bff;
+  transition-delay: 0.4s;
+}
+
+.react-server-side-table .table-checkbox.path svg {
+  stroke: #007bff;
+  stroke-dasharray: 86.12;
+  stroke-dashoffset: 86.12;
+}
+
+.react-server-side-table .table-checkbox.path input:checked + svg {
+  stroke-dasharray: 16.1 86.12;
+  stroke-dashoffset: 102.22;
+  transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+}
+
+.react-server-side-table .table-checkbox.bounce svg {
+  stroke: #fff;
+  transform: scale(0) translateZ(0);
+}
+
+.react-server-side-table .table-checkbox.bounce input:checked {
+  box-shadow: inset 0 0 0 11px #007bff;
+}
+
+.react-server-side-table .table-checkbox.bounce input:checked + svg {
+  animation: bounce 0.4s linear forwards 0.2s;
+}
+
+.react-server-side-table .table-radio svg path {
+	stroke: #007bff;
+}
+
+.react-server-side-table .table-radio svg path.outer {
+	stroke-width: 2;
+	stroke-dasharray: 57;
+  stroke-dashoffset: 171.22;
+}
+
+.react-server-side-table .table-radio svg path.inner {
+	stroke-width: 6;
+	stroke-dasharray: 19;
+	stroke-dashoffset: 19;
+}
+
+.react-server-side-table .table-radio input:checked + svg path.outer {
+	stroke-dasharray: 16.1 86.12;
+  stroke-dashoffset: 45.22;
+  transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s;
+}
+
+.react-server-side-table .table-radio input:checked + svg path.inner {
+  stroke-dashoffset: 38;
+  transition: stroke-dasharray 0.3s, stroke-dashoffset 0.3s;
+	transition-delay: 0.2s;
+}
+
+.react-server-side-table .table-pagination {
+  padding: 15px 0;
+}
+
+.react-server-side-table .page-info {
+  float: left;
+  padding: 7px 0;
+  line-height: 1.25;
+  color: #555;
+}
+
+.react-server-side-table .pagination {
+  float: right;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  user-select: none;
+}
+
+.react-server-side-table .pagination > li:first-child > a {
+  border-radius: 4px 0 0 4px;
+  margin-left: 0;
+}
+
+.react-server-side-table .pagination > li:last-child > a {
+  border-radius: 0 4px 4px 0;
+}
+
+.react-server-side-table .pagination > li > a {
+  position: relative;
+  display: block;
+  outline: 0;
+  border: 1px solid #dee2e6;
+  margin-left: -1px;
+  padding: 6px 12px;
+  line-height: 1.25;
+  background-color: #fff;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.react-server-side-table .pagination > li > a:hover {
+  border-color: #dee2e6;
+  background-color: #e9ecef;
+  text-decoration: none;
+  color: #0056b3;
+}
+
+.react-server-side-table .pagination > li.active > a {
+  z-index: 1;
+  border-color: #007bff;
+  background-color: #007bff;
+  color: #fff;
+  pointer-events: none;
+}
+
+.react-server-side-table .pagination > li.disabled > a {
+  border-color: #dee2e6;
+  background-color: #fff;
+  color: #6c757d;
+  pointer-events: none;
+  cursor: default;
+}
+
+@keyframes bounce {
+  50% {
+    transform: scale(1.2);
+ }
+  75% {
+    transform: scale(0.9);
+ }
+  100% {
+    transform: scale(1);
+ }
+}
