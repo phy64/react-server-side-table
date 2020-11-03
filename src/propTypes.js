@@ -120,7 +120,7 @@ const propTypes = {
     colGroup: PropTypes.arrayOf(PropTypes.string),
     dataSrc: PropTypes.shape({
       data: PropTypes.string.isRequired, 
-      total: PropTypes.number.isRequired
+      total: PropTypes.string.isRequired
     }),
     language: PropTypes.shape({
       lengthMenu: PropTypes.objectOf(PropTypes.node),
