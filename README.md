@@ -1,8 +1,8 @@
 # react-server-side-table
 
-자주 사용하던 [jquery.dataTables](https://datatables.net/)를 react에서도 비슷하게 사용하기 위해 만들어졌습니다.
-많은 설정 없이 서버 측에 데이터를 요청해서 보여주기에 적합니다.
-데이터의 정렬, 페이지 처리, 표시 개수, 기본/추가 검색 필터, th의 병합, td의 사용자 지정 변경 등의 기능만 필요할 경우 적합하며, 
+자주 사용하던 [jquery.dataTables](https://datatables.net/)를 react에서도 비슷하게 사용하기 위해 만들어졌습니다.<br/>
+많은 설정 없이 서버 측에 데이터를 요청해서 보여주기에 적합니다.<br/>
+데이터의 정렬, 페이지 처리, 표시 개수, 기본/추가 검색 필터, th의 병합, td의 사용자 지정 변경 등의 기능만 필요할 경우 적합하며, <br/>
 고정 헤더 나 테이블 스크롤, td병합, 클라이언트 사이드 등은 아직은 지원하지 않습니다.
 
 ## 설치
@@ -22,20 +22,20 @@ import ReactServerSideTable from 'react-server-side-table';
 
 const url = 'your url';
 const headers = [
-    [
-      {title: "아이디"},
-      {title: "이름"},
-      {title: "연락처"},
-      {title: "이메일"},
-      {title: "등록일"}
-    ]
+  [
+    {title: "아이디"},
+    {title: "이름"},
+    {title: "연락처"},
+    {title: "이메일"},
+    {title: "등록일"}
+  ]
 ];
 const columns = [
-    {name: 'id'}, 
-    {name: 'name'}, 
-    {name: 'phone'}, 
-    {name: 'email'}, 
-    {name: 'reg_date'}
+  {name: 'id'}, 
+  {name: 'name'}, 
+  {name: 'phone'}, 
+  {name: 'email'}, 
+  {name: 'reg_date'}
 ];
 ...
 <ReactServerSideTable 
@@ -93,11 +93,11 @@ const headings = [
     {title: '등록일', column: 'reg_date', sortable: true, rowSpan: 2}
   ],
   [
-	{title: <span><i className="fa fa-picture-o"/> 사진</span>},
-	{title: <span><i className="fa fa-id-card"/> 아이디</span>, column: 'id', sortable: true},
-	{title: <span><i className="fa fa-user"/> 이름</span>, column: 'name', sortable: true},
-	{title: <span><i className="fa fa-phone"/> 연락처</span>, column: 'phone', sortable: true},
-	{title: <span><i className="fa fa-envelope"/> 이메일</span>, column: 'email', sortable: true}
+    {title: <span><i className="fa fa-picture-o"/> 사진</span>},
+    {title: <span><i className="fa fa-id-card"/> 아이디</span>, column: 'id', sortable: true},
+    {title: <span><i className="fa fa-user"/> 이름</span>, column: 'name', sortable: true},
+    {title: <span><i className="fa fa-phone"/> 연락처</span>, column: 'phone', sortable: true},
+    {title: <span><i className="fa fa-envelope"/> 이메일</span>, column: 'email', sortable: true}
   ]
 ];
 ```
@@ -114,46 +114,46 @@ const headings = [
 ```js
 //  columns example
 const columns = [
-	{
-		name: 'id',
-		checkbox: true
-	}, 
-	{
-		name: 'name',
-		radio: true
-	},
-	{
-	    name: 'seq',
-		formatter: ({ dataIndex, total, from }) => {
-			// 리스트 넘버링
-			const rowNumber = total - (from - 1) - dataIndex;
-			const addClass = rowNumber % 2 ? 'teal' : 'pink';
+  {
+    name: 'id',
+    checkbox: true
+  }, 
+  {
+    name: 'name',
+    radio: true
+  },
+  {
+    name: 'seq',
+    formatter: ({ dataIndex, total, from }) => {
+      // 리스트 넘버링
+      const rowNumber = total - (from - 1) - dataIndex;
+      const addClass = rowNumber % 2 ? 'teal' : 'pink';
 
-			return <span className={`ui label ${addClass}`}>{ rowNumber }</span>
-		}
-	},
-	{
-	    name: 'avatar',
-		formatter: ({ rowData }) => {
-			return <img src={ rowData.avatar }/>
-		}
-	}, 
-	{
-		name: 'id'
-	}, 
-	{
-		name: 'name',
-		className: 'class1 class2 class3 class4'
-	}, 
-	{
-		name: 'phone'
-	}, 
-	{
-		name: 'email'
-	}, 
-	{
-		name: 'reg_date'
-	}
+      return <span className={`ui label ${addClass}`}>{ rowNumber }</span>
+    }
+  },
+  {
+    name: 'avatar',
+    formatter: ({ rowData }) => {
+      return <img src={ rowData.avatar }/>
+    }
+  }, 
+  {
+    name: 'id'
+  }, 
+  {
+    name: 'name',
+    className: 'class1 class2 class3 class4'
+  }, 
+  {
+    name: 'phone'
+  }, 
+  {
+    name: 'email'
+  }, 
+  {
+    name: 'reg_date'
+  }
 ];
 ```
 
@@ -179,51 +179,51 @@ const columns = [
 // default settings
 ...
 settings: {
-    defaultStyle: true,
-    wrapperClass: '',
-    tableClass: '',
-    loadingImage: null,
-    perPageValues: [10, 20, 30, 100],
-    pagingDisplayLength: 10,
-    pagingFirstLastBtn: true,
-    pagingPrevNextBtn: true,
-    colGroup: [],
-    dataSrc: {
-      data: "data",
-      total: "total"
+  defaultStyle: true,
+  wrapperClass: '',
+  tableClass: '',
+  loadingImage: null,
+  perPageValues: [10, 20, 30, 100],
+  pagingDisplayLength: 10,
+  pagingFirstLastBtn: true,
+  pagingPrevNextBtn: true,
+  colGroup: [],
+  dataSrc: {
+    data: "data",
+    total: "total"
+  },
+  language: {
+    lengthMenu: {
+      show: 'Show',
+      entries: 'entries'
     },
-    language: {
-      lengthMenu: {
-        show: 'Show',
-        entries: 'entries'
-      },
-      pageInfo: {
-        showing: 'Showing',
-        to: 'to',
-        of: 'of',
-        entries: 'entries',
-        formatter: null
-      },
-      pagination: {
-        first: 'First',
-        prev: 'Previous',
-        next: 'Next',
-        last: 'Last'
-      },
-      search: 'Search',
-      empty : 'No entries to display'
+    pageInfo: {
+      showing: 'Showing',
+      to: 'to',
+      of: 'of',
+      entries: 'entries',
+      formatter: null
     },
-    queryParameterNames: {
-      search: 'search',
-      limit: 'limit',
-      page: 'page',
-      orderBy: 'orderBy',
-      direction: 'direction',
+    pagination: {
+      first: 'First',
+      prev: 'Previous',
+      next: 'Next',
+      last: 'Last'
     },
-    orderDirectionNames: {
-      ascending: 'asc',
-      descending: 'desc',
-    }
+    search: 'Search',
+    empty : 'No entries to display'
+  },
+  queryParameterNames: {
+    search: 'search',
+    limit: 'limit',
+    page: 'page',
+    orderBy: 'orderBy',
+    direction: 'direction',
+  },
+  orderDirectionNames: {
+    ascending: 'asc',
+    descending: 'desc',
+  }
 }
 ...
 
@@ -233,43 +233,44 @@ import LoadingImage from 'img src';
 loadingImage: <img src={ LoadingImage }/>,
 colGroup: ['20%', '20%', '20%', '20%', '20%'],
 language: {
-    pageInfo: {
-        formatter: ({ total, from, to }) => {
-            return `전체 ${total}개 항목 중 ${from} ~ ${to} 항목 보기`;
-        } 
-    }
+  pageInfo: {
+    formatter: ({ total, from, to }) => {
+      return `전체 ${total}개 항목 중 ${from} ~ ${to} 항목 보기`;
+    } 
+  }
 }
 ...
 ```
 
 ### Children
-테이블 상단에 기본 `lengthMenu` 와 `search`가 위치한 `영역 사이`에 자식 요소를 배치합니다.
+테이블 상단에 기본 `lengthMenu` 와 `search`가 위치한 `영역 사이`에 자식 요소를 배치합니다.<br/>
 간략한 정보의 입력이나, 연관이 있는 버튼등의 배치에 유용합니다.
 
 ```javascript
 <ReactServerSideTable 
-    url={url} 
-    headers={headers} 
-    columns={columns} 
+  url={url} 
+  headers={headers} 
+  columns={columns} 
 >
-    <>
-        <button className="btn btn-primary">children1</button>
-        <button className="btn btn-secondary">children2</button>
-        <button className="btn btn-success">children3</button>
-        <button className="btn btn-danger">children4</button>
-        <button className="btn btn-warning">children5</button>
-    </>
+  <>
+    <button className="btn btn-primary">children1</button>
+    <button className="btn btn-secondary">children2</button>
+    <button className="btn btn-success">children3</button>
+    <button className="btn btn-danger">children4</button>
+    <button className="btn btn-warning">children5</button>
+  </>
 </ReactServerSideTable>
 ```
 
 ## Api request
 `GET` method
+
 'example/api/users?`search`=&`limit`=&`page`=&`orderBy`=&`direction`=' + ...`addQueryParameters`
 
 `queryParameterNames` 설정에 따라 달라집니다.
 
 ## 추가 계획
-직장생활을 하다보니 언제가 될지는 모르겠지만...
-고정 헤더, 테이블 스크롤, 더보기 조합
-모바일과 반응형을 위한 아코디언 리스트(jquery.dataTables 같은)
+직장생활을 하다보니 언제가 될지는 모르겠지만...<br/>
+고정 헤더, 테이블 스크롤, 더보기 조합<br/>
+모바일과 반응형을 위한 아코디언 리스트(jquery.dataTables 같은)<br/>
 Context Menu를 이용한 여러 기능들(추가, 삭제 등)...
