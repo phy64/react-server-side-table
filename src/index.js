@@ -22,7 +22,7 @@ class ReactServerSideTable extends PureComponent {
     this.state = {
       settings: _.merge(_.cloneDeep(ReactServerSideTable.defaultProps.settings), settings),
       queryParameters: {
-        query: '',
+        search: '',
         addQueryParameters,
         limit: perPage,
         page: currentPage,
@@ -54,11 +54,11 @@ class ReactServerSideTable extends PureComponent {
     } = this.props;
     const { 
       settings: { dataSrc, queryParameterNames },
-      queryParameters: { query, addQueryParameters, limit, page, orderBy, direction }
+      queryParameters: { search, addQueryParameters, limit, page, orderBy, direction }
     } = this.state;
     
     const params = {
-      [queryParameterNames.query]: searching ? query : null,
+      [queryParameterNames.search]: searching ? search : null,
       [queryParameterNames.limit]: paging ? limit : null,
       [queryParameterNames.page]: paging ? page : null,
       [queryParameterNames.orderBy]: ordering ? orderBy : null,
@@ -175,7 +175,7 @@ class ReactServerSideTable extends PureComponent {
     const { value } = event.target;
     const parameters = {
       page: 1,
-      query: value
+      search: value
     };
 
     this.onChangeDebounced(parameters);
