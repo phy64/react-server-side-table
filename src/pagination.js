@@ -12,13 +12,25 @@ const Pagination = (props) => {
     handlePageChange
   } = props;
 
+  let visiblePages = pagingDisplayLength;
   const totalPage = Math.ceil(total/perPage);
-  const pageGroup = Math.ceil(currentPage/pagingDisplayLength); 
-  let pageLast = pageGroup * pagingDisplayLength;  
-  const pageFirst = pageLast - (pagingDisplayLength - 1);
 
-  if(pageLast > totalPage){
-    pageLast = totalPage;
+  if (visiblePages > totalPage) {
+	  visiblePages = totalPage;
+  };
+
+  const half = Math.floor(visiblePages / 2);
+  let start = currentPage - half + 1 - visiblePages % 2;
+  let end = currentPage + half;
+
+  if (start < 1) {
+    start = 1;
+    end = visiblePages;
+  };
+
+  if (end > totalPage) {
+    start = 1 + totalPage - visiblePages;
+    end = totalPage;
   };
 
   const pagination = [];
@@ -32,38 +44,34 @@ const Pagination = (props) => {
       handlePageChange(value);
     };
   };
-
-  if (pagingFirstLastBtn) {
+  
+  for (let i = start; i < end + 1; i++) {
     pagination.push(
-      <li key="first" className={`first ${firstDisabledClass}`}>
-        <a href="# " onClick={(event) => pageChange(event, 1)}>{first}</a>
+      <li key={i} className={currentPage === i ? 'active' : null}>
+        <a href="# " onClick={(event) => pageChange(event, i)}>{i}</a>
       </li>
     );
   };
+
   if (pagingPrevNextBtn) {
-    pagination.push(
+    pagination.unshift(
       <li key="prev" className={`prev ${firstDisabledClass}`}>
         <a href="# " onClick={(event) => pageChange(event, currentPage - 1)}>{prev}</a>
       </li>
     );
-  };
-  if (total > 0 && !isNaN(totalPage)) {
-    for (let i = pageFirst; i < pageLast + 1; i++) {
-      pagination.push(
-        <li key={i} className={currentPage === i ? 'active' : null}>
-          <a href="# " onClick={(event) => pageChange(event, i)}>{i}</a>
-        </li>
-      );
-    }
-  };
-  if (pagingPrevNextBtn) {
     pagination.push(
       <li key="next" className={`next ${lastDisabledClass}`}>
         <a href="# " onClick={(event) => pageChange(event, currentPage + 1)}>{next}</a>
       </li>
     );
   };
+
   if (pagingFirstLastBtn) {
+    pagination.unshift(
+      <li key="first" className={`first ${firstDisabledClass}`}>
+        <a href="# " onClick={(event) => pageChange(event, 1)}>{first}</a>
+      </li>
+    );
     pagination.push(
       <li key="last" className={`last ${lastDisabledClass}`}>
         <a href="# " onClick={(event) => pageChange(event, totalPage)}>{last}</a>
