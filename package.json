@@ -1,6 +1,6 @@
 {
   "name": "react-server-side-table",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react server side table(grid)",
   "main": "dist/index.js",
   "scripts": {
@@ -22,13 +22,14 @@
   "dependencies": {
     "axios": "^0.19.2",
     "prop-types": "^15.7.2",
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1"
+    "@babel/preset-react": "^7.12.1",
+    "babel-preset-minify": "^0.5.1"
   }
 }
