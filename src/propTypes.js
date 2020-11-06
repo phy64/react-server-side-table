@@ -24,7 +24,7 @@ const defaultProps = {
     defaultStyle: true,
     wrapperClass: '',
     tableClass: '',
-    perPageValues: [10, 20, 25, 100],
+    perPageValues: [10, 20, 30, 100],
     pagingDisplayLength: 10,
     pagingFirstLastBtn: true,
     pagingPrevNextBtn: true,
@@ -55,7 +55,7 @@ const defaultProps = {
       empty : 'No entries to display'
     },
     queryParameterNames: {
-      query: 'query',
+      search: 'search',
       limit: 'limit',
       page: 'page',
       orderBy: 'orderBy',
