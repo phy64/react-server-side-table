@@ -107,7 +107,7 @@ const headings = [
 | Name | Type | Description |
 | --- | --- | --- |
 | name | String | 연결할 데이터 키를 지정합니다. |
-| checkbox | Boolean | checkbox 사용 여부입니다. 실제 적용될 `data`, `formatter` 보다 우선순위에 있습니다. 사용할 열에만 지정해 주면 됩니다. data가 바뀔때 checked는 유지되지 않습니다.<br/>`(주의)`각 열마다 사용할 수 있지만, 다 같은 동작을 합니다. |
+| checkbox | Boolean | checkbox 사용 여부입니다. 실제 적용될 `data`, `formatter` 보다 우선순위에 있습니다. 사용할 열에만 지정해 주면 됩니다. data가 바뀔때 checked는 유지되지 않습니다.<br/>`name`으로 연결된 값이 `value`값이 됩니다.<br/>`(주의)`각 열마다 사용할 수 있지만, 다 같은 동작을 합니다. |
 | formatter | Function | 열이 생성될 때 실행될 callback 함수입니다. `title` 보다 우선순위에 있습니다. { `rowData`, `dataIndex`, `total`, `from` } 인자로 전달합니다. String, Number, Element 등 렌더링 가능한 요소를 반환해야 합니다. |
 | className | String | className을 입력하듯 문자열로 나열해 주면 됩니다. |
 
