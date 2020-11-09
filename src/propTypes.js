@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 
 const defaultProps = {
   headers: [],
-  reRenderApiRequest: {
-    enabled: false
-  },
+  reRenderApiRequest: false,
   ordering: false,
   lengthChange: true,
   searching: true,
@@ -16,7 +14,6 @@ const defaultProps = {
     column: '', 
     direction: ''
   },
-  loadingImage: null,
   addQueryParameters: {},
   checkboxCheckedCallback: null,
   radioCheckedCallback: null,
@@ -24,6 +21,7 @@ const defaultProps = {
     defaultStyle: true,
     wrapperClass: '',
     tableClass: '',
+    loadingImage: null,
     perPageValues: [10, 20, 30, 100],
     pagingDisplayLength: 10,
     pagingFirstLastBtn: true,
@@ -91,9 +89,7 @@ const propTypes = {
       className: PropTypes.string
     }).isRequired
   ).isRequired,
-  reRenderApiRequest: PropTypes.shape({
-    enabled: PropTypes.bool.isRequired
-  }),
+  reRenderApiRequest: PropTypes.bool,
   ordering: PropTypes.bool,
   lengthChange: PropTypes.bool,
   searching: PropTypes.bool,
@@ -105,7 +101,6 @@ const propTypes = {
     column: PropTypes.string.isRequired, 
     direction: PropTypes.string.isRequired,
   }),
-  loadingImage: PropTypes.node,
   addQueryParameters: PropTypes.object,
   checkboxCheckedCallback: PropTypes.func,
   radioCheckedCallback: PropTypes.func,
@@ -113,6 +108,7 @@ const propTypes = {
     defaultStyle: PropTypes.bool,
     wrapperClass: PropTypes.string,
     tableClass: PropTypes.string,
+    loadingImage: PropTypes.node,
     perPageValues: PropTypes.arrayOf(PropTypes.number.isRequired),
     pagingDisplayLength: PropTypes.number,
     pagingFirstLastBtn: PropTypes.bool,
