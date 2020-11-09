@@ -130,6 +130,7 @@
   padding: 8px 10px;
   vertical-align: middle;
   text-align: center;
+  word-break: break-word;
 }
 
 .react-server-side-table table thead th {
