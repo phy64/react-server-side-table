@@ -67,7 +67,7 @@ const columns = [
 | addQueryParameters | Object |  | 서버 측 요청에 추가로 포함될 쿼리 스트링입니다. 사용자 지정 검색 필터를 만들어서 활용할 수 있습니다. 마지막에 포함되므로 중복된 key는 덮여집니다. |
 | checkboxCheckedCallback | Function |  | 기본 제공되는 checkbox의 이벤트 callback 함수입니다. [checked values]를 반환합니다. |
 | radioCheckedCallback | Function |  | 기본 제공되는 radio의 이벤트 callback 함수입니다. checked value를 반환합니다. |
-| reRenderApiRequest | Object | enabled: false  | 컴포넌트가 rerender 될 때 서버 측 재 요청 여부입니다. `enabled` 속성으로 제어합니다. Boolean type으로 했었지만, 전달받은 props가 아무것도 변경된 것이 없을 때도 적용하기 위해 Object로 변경했습니다.(참조 대상 변경) |
+| reRenderApiRequest | Boolean | false  | 컴포넌트가 rerender 될 때 서버 측 재 요청 여부입니다. 첫 렌더링 이후 `ordering`, `order`, `lengthChange`, `searching`, `paging`, `currentPage`, `perPage`, `addQueryParameters`의 설정값을 변경하고 데이터를 올바르게 반영하기 위해선 true 여야 합니다. |
 | settings | Object | 많음... | 외형이나 세부 설정의 집합입니다. 첫 렌더링 후 변경되지 않습니다. 기본 설정과 사용자 설정이 병합됩니다. |
 
 ### props - headers
@@ -240,6 +240,40 @@ language: {
   }
 }
 ...
+```
+
+### props - reRenderApiRequest
+
+```javascript
+// 클래스 컴포넌트 기준 reRenderApiRequest를 이용한 추가 검색 필터
+...
+this.state = {
+  ...
+  reRenderApiRequest: true,
+  addQueryParameters: {
+    name: ''
+  }
+  ...
+};
+...
+// 검색
+handleSearch = () => {
+  const addQueryParameters = {
+    name: `name input value`
+  };
+  
+  this.setState({
+    addQueryParameters
+  });
+};
+...
+const { reRenderApiRequest, addQueryParameters } = this.state;
+<ReactServerSideTable 
+  ...
+  reRenderApiRequest={reRenderApiRequest}
+  addQueryParameters={addQueryParameters}
+  ...
+/>
 ```
 
 ### Children
