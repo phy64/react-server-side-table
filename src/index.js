@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import { defaultProps, propTypes } from './propTypes';
@@ -7,7 +7,7 @@ import Pagination from './pagination';
 import LoadingImg from './loading.png';
 import './style.css';
 
-class ReactServerSideTable extends PureComponent {
+class ReactServerSideTable extends Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class ReactServerSideTable extends PureComponent {
     } = props;
 
     this.state = {
-      settings: _.merge(_.cloneDeep(ReactServerSideTable.defaultProps.settings), settings),
+      settings: _.merge(_.cloneDeep(defaultProps.settings), settings),
       queryParameters: {
         search: '',
         addQueryParameters,
@@ -96,7 +96,7 @@ class ReactServerSideTable extends PureComponent {
         radioChecked: '',
         isLoading: false
       };
-  
+
       this.setState(newState);
     } catch (e) {
       console.error(e);
@@ -123,13 +123,13 @@ class ReactServerSideTable extends PureComponent {
   };
 
   handleFetchData(parameters) {
-    this.handleCheckboxRadioCallback([], '');
-
     this.setState(prevState => {
       const queryParameters = {
         ...prevState.queryParameters,
         ...parameters
       };
+
+      this.handleCheckboxRadioCallback([], '');
     
       return { queryParameters, isLoading: true };
     }, () => {
@@ -228,16 +228,20 @@ class ReactServerSideTable extends PureComponent {
     this.fetchData();
   };
 
+  shouldComponentUpdate(nextProps, nextState){
+    return (nextState !== this.state) || !this.state.isLoading;
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.props.reRenderApiRequest.enabled && 
+      this.props.reRenderApiRequest && 
       (prevState.isLoading === this.state.isLoading) && 
       (prevState.checkboxChecked === this.state.checkboxChecked) && 
       (prevState.radioChecked === this.state.radioChecked)
     ) {
       const { currentPage, perPage, order, addQueryParameters } = this.props;
       const parameters = { ...prevState.queryParameters };
-
+      
       if (prevProps.currentPage !== currentPage) {
         parameters.page = currentPage;
       };
@@ -269,8 +273,7 @@ class ReactServerSideTable extends PureComponent {
       searching, 
       pageInfo, 
       paging,
-      children,
-      loadingImage
+      children
     } = this.props;
     const { 
       data,
@@ -288,6 +291,7 @@ class ReactServerSideTable extends PureComponent {
         defaultStyle,
         wrapperClass,
         tableClass,
+        loadingImage,
         colGroup,
         orderDirectionNames: { ascending },
         perPageValues,
