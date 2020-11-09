@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "transpile": "rmdir /s /q dist && mkdir dist && babel src -d dist --copy-files",
-    "publish": "npm publish --access public"
+    "npm:publish": "npm publish --access public"
   },
   "keywords": [
     "react",
